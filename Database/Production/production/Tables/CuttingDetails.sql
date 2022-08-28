@@ -1,0 +1,25 @@
+﻿CREATE TABLE [production].[CuttingDetails] (
+    [Id]                UNIQUEIDENTIFIER NOT NULL,
+    [PoNo]              NVARCHAR (60)    NOT NULL,
+    [PoDetailsId]       INT              NOT NULL,
+    [Destination]       NVARCHAR (50)    NOT NULL,
+    [ShipmentDate]      DATETIME         NOT NULL,
+    [ShipmentMode]      NVARCHAR (50)    NOT NULL,
+    [InspectionDate]    DATETIME         NULL,
+    [OrderQty]          DECIMAL (10, 2)  NOT NULL,
+    [OrderUOM]          NVARCHAR (50)    NULL,
+    [ExcessPercentage]  NVARCHAR (10)    NOT NULL,
+    [WastagePercentage] NVARCHAR (10)    NOT NULL,
+    [ColorId]           UNIQUEIDENTIFIER NOT NULL,
+    [ColorName]         NVARCHAR (40)    NOT NULL,
+    [ColorQty]          DECIMAL (10, 2)  NOT NULL,
+    [ExtraPercentage]   DECIMAL (10, 2)  NOT NULL,
+    [WithExtra]         DECIMAL (10, 2)  NOT NULL,
+    [LayPerCut]         DECIMAL (10, 2)  NOT NULL,
+    [TotalQty]          DECIMAL (10, 2)  NOT NULL,
+    [CuttingId]         UNIQUEIDENTIFIER NOT NULL,
+    [CutNo]             NVARCHAR (30)    NOT NULL,
+    CONSTRAINT [PK_production_CuttingDetails_Id] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_production_CuttingDetails_Cuttings] FOREIGN KEY ([CuttingId]) REFERENCES [production].[Cuttings] ([Id])
+);
+
